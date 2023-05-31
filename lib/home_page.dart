@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trashmap/app_theme.dart';
+import 'package:trashmap/login_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,63 +8,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isDarkMode = false;
-
-  void toggleTheme() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tema Escuro'),
-      ),
-      body: Container(
-        color: isDarkMode ? Colors.grey[900] : Colors.white,
-        child: Center(
-          child: ElevatedButton(
-            onPressed: toggleTheme,
-            child: Text(isDarkMode ? 'Tema Claro' : 'Tema Escuro'),
+        backgroundColor: Color.fromARGB(255, 255, 89, 0),
+        title: Text('trashmap'),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(
+                value: 1,
+                child: Row(children: [
+                  Text('Cor de fundo'),
+                ]),
+              ),
+              PopupMenuItem<int>(
+                value: 0,
+                child: Row(children: [
+                  Icon(Icons.logout, color: Colors.black),
+                  const SizedBox(width: 8),
+                  Text('Desconectar-se'),
+                ]),
+              ),
+            ],
           ),
-        ),
+        ],
+      ),
+      body: Center(
+        child: Text('Bem-vindo à página inicial!'),
       ),
     );
   }
 }
 
-const MaterialColor orange = const MaterialColor(
-  0xFFFF5900,
-  const <int, Color>{
-    50: const Color(0xFFFF5900),
-    100: const Color(0xFFFF5900),
-    200: const Color(0xFFFF5900),
-    300: const Color(0xFFFF5900),
-    400: const Color(0xFFFF5900),
-    500: const Color(0xFFFF5900),
-    600: const Color(0xFFFF5900),
-    700: const Color(0xFFFF5900),
-    800: const Color(0xFFFF5900),
-    900: const Color(0xFFFF5900),
-  },
-);
-
-class ThemeButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tema Escuro',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: orange,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: orange,
-      ),
-      home: HomePage(),
-    );
+void onSelected(BuildContext context, int item) {
+  switch (item) {
+    case 0:
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => LoginPage()),
+        (route) => false,
+      );
+      break;
+    case 1:
+      AppTheme();
+      break;
   }
 }

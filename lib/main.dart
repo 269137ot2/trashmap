@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:trashmap/app_widget.dart';
 
-main() {
-  runApp(ThemeButton());
+void main() {
+  runApp(AppWidget());
 }
