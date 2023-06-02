@@ -6,89 +6,85 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  Widget _body(){
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Padding(
-        padding: EdgeInsets.only(left: 1, right: 1, top: 1, bottom: 1),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/orangeicon.png',
-            width: 150,
-            height: 150,
-            ),
-            SizedBox(
-              width: 275,
-              child: TextField(
-                onChanged: (text){
-                },
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-              SizedBox(
-                width: 275,
-                child: TextField(
-                  onChanged: (text){
-                  },
-                  textInputAction: TextInputAction.go,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: "Senha",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 275,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll<Color>(Color.fromARGB(255, 255, 89, 0),
-                  ),
-                ),
-                child: Text('Entrar'),
-                onPressed: (){
-                  Navigator.of(context).pushReplacementNamed('/home');
-                }
-              ),
-            ),
-            SizedBox(height: 10),
-            GestureDetector(
-              child: Text('Criar conta'),
-              onTap: (){
-                Navigator.of(context).pushNamed('/home');
-              },
-            ),
-          ],
-        ),
-      ),
-    );
+  void login() {
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    // Perform login logic here (e.g., validate credentials)
+
+    if (email.isNotEmpty && password.isNotEmpty) {
+      Navigator.pushReplacementNamed(context, '/home');
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          _body(),
-        ],
-      )
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/orangeicon.png',
+                width: 150,
+                height: 150,
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: 325,
+                child: TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                width: 325,
+                child: TextField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Senha',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                width: 325,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll<Color>(Color.fromARGB(255, 255, 89, 0),
+                    ),
+                  ),
+                  onPressed: login,
+                  child: Text('Entrar'),
+                ),
+              ),
+              SizedBox(height: 10),
+              GestureDetector(
+                child: Text('Criar conta'),
+                onTap: (){
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
