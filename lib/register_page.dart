@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void login() {
+  void register() {
     String email = emailController.text;
     String password = passwordController.text;
 
     // Perform login logic here (e.g., validate credentials)
 
     if (email.isNotEmpty && password.isNotEmpty) {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/');
     }
   }
 
-  bool _showPassword = false;
+bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 89, 0),
+        centerTitle: true,
+        title: Text('Pagina de Registro'),
+      ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -41,9 +49,9 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: 325,
                 child: TextField(
+                  controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -56,9 +64,9 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: 325,
                 child: TextField(
-                  textInputAction: TextInputAction.go,
                   controller: passwordController,
-                  obscureText: _showPassword == false ? true : false,
+                  textInputAction: TextInputAction.go,
+                  obscureText: true,
                   decoration: InputDecoration(
                     suffixIcon: GestureDetector(
                       child: Icon(_showPassword == false ? Icons.visibility_off : Icons.visibility),
@@ -84,17 +92,11 @@ class _LoginPageState extends State<LoginPage> {
                       Color.fromARGB(255, 255, 89, 0),
                     ),
                   ),
-                  onPressed: login,
-                  child: Text('Entrar'),
+                  onPressed: register,
+                  child: Text('Registrar-se'),
                 ),
               ),
-              SizedBox(height: 10),
-              GestureDetector(
-                child: Text('Criar conta'),
-                onTap: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-              ),
+              SizedBox(height: 100),
             ],
           ),
         ),
