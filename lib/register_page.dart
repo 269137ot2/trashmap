@@ -22,7 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-bool _showPassword = false;
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +66,7 @@ bool _showPassword = false;
                 child: TextField(
                   controller: passwordController,
                   textInputAction: TextInputAction.go,
-                  obscureText: true,
+                  obscureText: _showPassword == false ? true : false,
                   decoration: InputDecoration(
                     suffixIcon: GestureDetector(
                       child: Icon(_showPassword == false ? Icons.visibility_off : Icons.visibility),
