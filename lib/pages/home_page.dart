@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
               PopupMenuItem<int>(
                 value: 1,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.person, color: Colors.black),
                     Text('Perfil'),
                   ],
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               PopupMenuItem<int>(
                 value: 1,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.calendar_month, color: Colors.black),
                     Text('Calendario'),
                   ],
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
               PopupMenuItem<int>(
                 value: 1,
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.settings, color: Colors.black),
                     Text('Configurações'),
                   ],
@@ -49,9 +49,9 @@ class _HomePageState extends State<HomePage> {
               ),
               PopupMenuItem<int>(
                 value: 0,
-                child: Row(children: [
+                child: Row(children: const [
                   Icon(Icons.logout, color: Colors.black),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Text('Desconectar-se'),
                 ]),
               ),

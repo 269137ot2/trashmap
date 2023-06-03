@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: 325,
                 child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -53,9 +56,18 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 width: 325,
                 child: TextField(
+                  textInputAction: TextInputAction.go,
                   controller: passwordController,
-                  obscureText: true,
+                  obscureText: _showPassword == false ? true : false,
                   decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      child: Icon(_showPassword == false ? Icons.visibility_off : Icons.visibility),
+                      onTap: (){
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                    ),
                     labelText: 'Senha',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),

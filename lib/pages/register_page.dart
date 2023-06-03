@@ -22,9 +22,11 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 89, 0),
         centerTitle: true,
@@ -48,6 +50,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: 325,
                 child: TextField(
                   controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -61,8 +65,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: 325,
                 child: TextField(
                   controller: passwordController,
-                  obscureText: true,
+                  textInputAction: TextInputAction.go,
+                  obscureText: _showPassword == false ? true : false,
                   decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      child: Icon(_showPassword == false ? Icons.visibility_off : Icons.visibility),
+                      onTap: (){
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
+                    ),
                     labelText: 'Senha',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
