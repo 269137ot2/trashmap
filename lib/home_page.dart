@@ -12,17 +12,40 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromARGB(255, 255, 89, 0),
-        title: Text('trashmap'),
+        centerTitle: true,
+        title: Text('TRASHMAP'),
         actions: [
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
               PopupMenuItem<int>(
                 value: 1,
-                child: Row(children: [
-                  Text('Cor de fundo'),
-                ]),
+                child: Row(
+                  children: [
+                    Icon(Icons.person, color: Colors.black),
+                    Text('Perfil'),
+                  ],
+                ),
+              ),
+              PopupMenuItem<int>(
+                value: 1,
+                child: Row(
+                  children: [
+                    Icon(Icons.calendar_month, color: Colors.black),
+                    Text('Calendario'),
+                  ],
+                ),
+              ),
+              PopupMenuItem<int>(
+                value: 1,
+                child: Row(
+                  children: [
+                    Icon(Icons.settings, color: Colors.black),
+                    Text('Configurações'),
+                  ],
+                ),
               ),
               PopupMenuItem<int>(
                 value: 0,
