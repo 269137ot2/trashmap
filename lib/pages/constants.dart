@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-const MaterialColor orange = const MaterialColor(
+const MaterialColor orange = MaterialColor(
   0xFFFF5900,
-  const <int, Color>{
-    50: const Color(0xFFFF5900),
-    100: const Color(0xFFFF5900),
-    200: const Color(0xFFFF5900),
-    300: const Color(0xFFFF5900),
-    400: const Color(0xFFFF5900),
-    500: const Color(0xFFFF5900),
-    600: const Color(0xFFFF5900),
-    700: const Color(0xFFFF5900),
-    800: const Color(0xFFFF5900),
-    900: const Color(0xFFFF5900),
+  <int, Color>{
+    50: Color(0xFFFF5900),
+    100: Color(0xFFFF5900),
+    200: Color(0xFFFF5900),
+    300: Color(0xFFFF5900),
+    400: Color(0xFFFF5900),
+    500: Color(0xFFFF5900),
+    600: Color(0xFFFF5900),
+    700: Color(0xFFFF5900),
+    800: Color(0xFFFF5900),
+    900: Color(0xFFFF5900),
   },
 );
 

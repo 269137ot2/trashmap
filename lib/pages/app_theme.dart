@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class AppTheme extends StatefulWidget {
+  const AppTheme({super.key});
+
   @override
   _AppThemeState createState() => _AppThemeState();
 }
@@ -19,7 +21,7 @@ class _AppThemeState extends State<AppTheme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tema Escuro'),
+        title: const Text('Tema Escuro'),
       ),
       body: Container(
         color: isDarkMode ? Colors.grey[900] : Colors.white,
@@ -35,6 +37,8 @@ class _AppThemeState extends State<AppTheme> {
 }
 
 class ThemeButton extends StatelessWidget {
+  const ThemeButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

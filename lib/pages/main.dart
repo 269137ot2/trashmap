@@ -3,5 +3,5 @@ import 'package:trashmap/pages/app_widget.dart';
 
 
 void main() {
-  runApp(AppWidget());
+  runApp(const AppWidget());
 }

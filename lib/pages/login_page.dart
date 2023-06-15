@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -37,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SizedBox(
                 width: 325,
                 child: TextField(
@@ -52,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 325,
                 child: TextField(
@@ -75,22 +77,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               SizedBox(
                 width: 325,
                 child: ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(
                       Color.fromARGB(255, 255, 89, 0),
                     ),
                   ),
                   onPressed: login,
-                  child: Text('Entrar'),
+                  child: const Text('Entrar'),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               GestureDetector(
-                child: Text('Criar conta'),
+                child: const Text('Criar conta'),
                 onTap: () {
                   Navigator.pushNamed(context, '/register');
                 },

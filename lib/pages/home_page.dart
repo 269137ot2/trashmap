@@ -18,10 +18,10 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: const Text('TRASHMAP'),
       ),
-       drawer: Drawer(
+       drawer: const Drawer(
         child: DrawerList(),
       ),
-      body: OrderTrackingPage(),
+      body: const OrderTrackingPage(),
     );
   }
 }

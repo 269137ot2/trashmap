@@ -28,9 +28,9 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 89, 0),
+        backgroundColor: const Color.fromARGB(255, 255, 89, 0),
         centerTitle: true,
-        title: Text('Pagina de Registro'),
+        title: const Text('Pagina de Registro'),
       ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               SizedBox(
                 width: 325,
                 child: TextField(
@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 325,
                 child: TextField(
@@ -83,20 +83,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               SizedBox(
                 width: 325,
                 child: ElevatedButton(
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(
                       Color.fromARGB(255, 255, 89, 0),
                     ),
                   ),
                   onPressed: register,
-                  child: Text('Registrar-se'),
+                  child: const Text('Registrar-se'),
                 ),
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
             ],
           ),
         ),
