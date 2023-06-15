@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trashmap/drawer.dart';
+import 'package:trashmap/pages/drawer.dart';
+import 'package:trashmap/pages/order_tracking_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,9 +21,7 @@ class _HomePageState extends State<HomePage> {
        drawer: Drawer(
         child: DrawerList(),
       ),
-      body: const Center(
-        child: Text('Bem-vindo à página inicial!'),
-      ),
+      body: OrderTrackingPage(),
     );
   }
 }
