@@ -19,11 +19,11 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
   List<LatLng> polylineCoordinates = [];
   LocationData? currentLocation;
 
-  Future<void> _getLocation() async {
-    {
+    Future<void> _getLocation() async {
       final location = await getLocation();
+      setState(() {
         currentLocation = location;
-      }
+      });
     }
 
   void getPolyPoints() async {
@@ -54,7 +54,9 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
+      body: currentLocation == null
+      ? const Center(child: Text("Loading"))
+      : GoogleMap(
         initialCameraPosition: CameraPosition(
           target: LatLng(currentLocation!.latitude!, currentLocation!.longitude!),
           zoom: 13.5,  
