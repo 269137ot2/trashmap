@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,11 +14,12 @@ class OrderTrackingPage extends StatefulWidget {
 
 class OrderTrackingPageState extends State<OrderTrackingPage> {
 
-  static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
-  static const LatLng destination = LatLng(37.33429383, -122.06600055);
+  static const LatLng sourceLocation = LatLng(37.4221, -122.0841);
+  static const LatLng destination = LatLng(37.4116, -122.0713);
 
   List<LatLng> polylineCoordinates = [];
   LocationData? currentLocation;
+  StreamSubscription<LocationData>? newLoc;
 
     Future<void> _getLocation() async {
       final location = await getLocation();
@@ -25,6 +27,14 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
         currentLocation = location;
       });
     }
+
+  Future<void> _listenLocation() async {
+    newLoc = onLocationChanged().listen((LocationData newLoc) async {
+      setState(() {
+        currentLocation = newLoc;
+      });
+    });
+  }
 
   void getPolyPoints() async {
     PolylinePoints polylinePoints = PolylinePoints();
@@ -46,6 +56,7 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
 
   @override
   void initState() {
+    _listenLocation();
     _getLocation();
     getPolyPoints();
     super.initState();
