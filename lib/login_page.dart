@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
     String email = emailController.text;
     String password = passwordController.text;
 
-    // Perform login logic here (e.g., validate credentials)
+    // credenciais
 
     if (email.isNotEmpty && password.isNotEmpty) {
       Navigator.pushReplacementNamed(context, '/home');
